@@ -3,7 +3,7 @@ Middleware for express to protect cookie making it HttpOnly.
 Also this Middleware adds flag to check for presence of this property (NOT HttpOnly).
 
 ``` sh
-npm install express-limiter --save
+npm install protected-cookie --save
 ```
 
 
