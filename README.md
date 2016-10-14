@@ -1,4 +1,4 @@
-![CircleCI](https://circleci.com/gh/yankouskia/protected-cookie.svg?style=shield)
+[![CircleCI](https://circleci.com/gh/yankouskia/protected-cookie.svg?style=svg)](https://circleci.com/gh/yankouskia/protected-cookie)
 
 # Express protected cookie middleware
 Middleware for express to protect cookie making it HttpOnly.
