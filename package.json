@@ -1,6 +1,6 @@
 {
   "name": "protected-cookie",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Middleware for Express.js for setting HttpOnly cookie and get access to existance of this cookie",
   "main": "index.js",
   "scripts": {
