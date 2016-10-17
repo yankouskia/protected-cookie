@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports = function protectedCookieMiddleware(flag) {
+module.exports = function protectedCookieMiddleware(flag, delimiter) {
   flag = flag || 'exists';
-  var delimiter = '_';
+  delimiter = delimiter || '_';
 
   return function protectedCookie(req, res, next) {
     if(res.protectedCookie && res.clearProtectedCookie) {

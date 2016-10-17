@@ -8,9 +8,11 @@ describe('protectedCookieMiddleware', function() {
     next,
     protectedCookieMiddleware,
     protectedCookieMiddlewareWithFlag,
+    protectedCookieMiddlewareWithFlagDelimiter,
     token,
     flag,
     tokenExistance,
+    delimiter,
     options,
     tokenValue;
 
@@ -19,8 +21,10 @@ describe('protectedCookieMiddleware', function() {
     res = {};
     next = sinon.spy();
     flag = 'check';
+    delimiter = '|';
     protectedCookieMiddleware = protectedCookie();
     protectedCookieMiddlewareWithFlag = protectedCookie(flag);
+    protectedCookieMiddlewareWithFlagDelimiter = protectedCookie(flag, delimiter);
     token = 'token';
     tokenValue = 'ok';
     tokenExistance = 'token_exists';
@@ -61,6 +65,17 @@ describe('protectedCookieMiddleware', function() {
       assert(res.cookie.calledWithMatch(token + '_' + flag, true, { httpOnly: false }));
     });
 
+    it('should set cookie and existance flag on protectedCookie() with custom flag and delimiter', function() {
+
+      res.cookie = sinon.spy();
+      protectedCookieMiddlewareWithFlagDelimiter(req, res, next);
+      res.protectedCookie(token, tokenValue);
+
+      assert(res.cookie.calledTwice, true);
+      assert(res.cookie.calledWithMatch(token, tokenValue, { httpOnly: true }));
+      assert(res.cookie.calledWithMatch(token + delimiter + flag, true, { httpOnly: false }));
+    });
+
     it('should throw error if res.cookie is not defined', function() {
 
       protectedCookieMiddleware(req, res, next);
@@ -90,6 +105,17 @@ describe('protectedCookieMiddleware', function() {
       assert(res.clearCookie.calledTwice, true);
       assert(res.clearCookie.calledWithMatch(token, options), true);
       assert(res.clearCookie.calledWithMatch(token + '_' + flag, options), true);
+    });
+
+    it('should clear cookie and existance flag on clearProtectedCookie() with custom flag and delimiter', function() {
+
+      res.clearCookie = sinon.spy();
+      protectedCookieMiddlewareWithFlagDelimiter(req, res, next);
+      res.clearProtectedCookie(token, options);
+
+      assert(res.clearCookie.calledTwice, true);
+      assert(res.clearCookie.calledWithMatch(token, options), true);
+      assert(res.clearCookie.calledWithMatch(token + delimiter + flag, options), true);
     });
 
     it('should throw error if res.clearCookie is not defined', function() {
