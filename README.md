@@ -12,7 +12,7 @@ npm install protected-cookie --save
 ``` js
 'use strict'
 
-var express = require('express')
+var express = require('express');
 var protectedCookie = require('protected-cookie');
 
 app = express();
@@ -36,7 +36,7 @@ In other way you want to check if cookie is set on client side.
 ### API options
 
 ``` js
-  protectedCookie(flag, delimiter)
+  protectedCookie(flag, delimiter);
 ```
 
  - `flag`: `String` *optional* wich set flag to cookie name with '_' delimiter, which can be changed (if cookie name is `token`, then existance flag name will be `token_exists` which is `true` or `false`)
