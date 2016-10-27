@@ -23,7 +23,8 @@ app.use(protectedCookie('check', '__'));
 ### Tests
 
 ``` sh
-npm install protected-cookie --save
+cd protected-cookie
+npm test
 ```
 
 
