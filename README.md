@@ -1,5 +1,7 @@
 [![CircleCI](https://circleci.com/gh/yankouskia/protected-cookie.svg?style=shield)](https://circleci.com/gh/yankouskia/protected-cookie)
 
+[![NPM](https://nodei.co/npm/protected-cookie.png?downloads=true)](https://www.npmjs.com/package/protected-cookie)
+
 # Express protected cookie middleware
 Middleware for express to protect cookie making it HttpOnly.
 Also this Middleware adds flag to check for presence of this property (NOT HttpOnly).
